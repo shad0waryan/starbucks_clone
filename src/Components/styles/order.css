@@ -1,0 +1,33 @@
+.category > a {
+  position: relative;
+  text-decoration: none;
+  opacity: 60%;
+}
+
+.category > a:hover {
+  opacity: 100%;
+  color: #007549;
+  font-weight: 400;
+}
+
+.category > a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  bottom: 0;
+  margin-bottom: -24px;
+  left: 0;
+  background-color: #007549;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.category > a:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}

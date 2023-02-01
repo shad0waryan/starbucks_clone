@@ -1,0 +1,65 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  width: 45%;
+  padding-bottom: 50px;
+  background-color: white;
+  z-index: 999;
+  margin-bottom: 40vh;
+}
+
+.login__page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("https://wallpapercave.com/wp/a8vkMZi.jpg");
+  object-fit: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.input__field {
+  padding: 15px;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+.login__button__div {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.login__button {
+  color: white;
+  font-weight: 500;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 25px;
+  width: 60%;
+}
+
+.welcome__bar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.right__arrow {
+  width: 28px !important;
+  height: 28px !important;
+}
+
