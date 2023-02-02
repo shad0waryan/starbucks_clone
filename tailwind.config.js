@@ -14,6 +14,10 @@ module.exports = {
       white: "#ffffff",
       fadeblack: "#212529",
       smokewhite: "#f9f9f9",
+      red: "#d21f3c",
+      darkred: "#c21807",
+      lightgrey: "#a0a0a0",
+      darkishgreen: "#006241",
     },
     fontSize: {
       s1: "10px",

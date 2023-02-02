@@ -7,60 +7,63 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
 function Navbar() {
   return (
-    <div className="navbar">
-      <div className="navbar__logo p-5">
-        <Link to="/">
-          <img src={logo} alt="" className="logo w-[40px] h-[40px]" />
+    <div className="navbar pl-24 pr-24">
+      <div className="navbar__menu text-s4">
+        <Link to="/Home" className="p-5">
+          <div className="navbar__logo  ">
+            <img src={logo} alt="" className="logo w-[40px] h-[40px] hover:scale-105" />
+          </div>
         </Link>
-      </div>
-      <div className="navbar__menu text-s4 mr-24">
-        <Link to="/">
-          <div className="home pl-2 pr-2 hover:cursor-pointer pt-2 pb-2">
+        <Link to="/Home">
+          <div className="home pl-2 pr-2 hover:cursor-pointer pt-2 pb-2 hover:scale-110" >
             Home
           </div>
         </Link>
         <Link to="/gift">
-          <div className="gift pl-2 pr-2 hover:cursor-pointer pt-2 pb-2">
+          <div className="gift pl-2 pr-2 hover:cursor-pointer pt-2 pb-2 hover:scale-110">
             Gift
           </div>
         </Link>
         <Link to="/order">
-          <div className="order pl-2 pr-2 hover:cursor-pointer pt-2 pb-2">
+          <div className="order pl-2 pr-2 hover:cursor-pointer pt-2 pb-2 hover:scale-110">
             Order
           </div>
         </Link>
         <Link to="/pay">
-          <div className="pay pl-2 pr-2 hover:cursor-pointer pt-2 pb-2">
+          <div className="pay pl-2 pr-2 hover:cursor-pointer pt-2 pb-2 hover:scale-110">
             Pay
           </div>
         </Link>
         <Link to="/store">
-          <div className="store pl-2 pr-2 hover:cursor-pointer pt-2 pb-2">
+          <div className="store pl-2 pr-2 hover:cursor-pointer pt-2 pb-2 hover:scale-110">
             Store
           </div>
         </Link>
       </div>
-      <div className="navbar__search ">
-        <SearchOutlinedIcon style={{ color: "#6b6b6b" }} />
-        <input
-          type="text"
-          className="search__input"
-          placeholder="Looking for something specific?"
-        />
-      </div>
-      <div className="navbar__cart">
-        <Link to="/cart">
-          <div className="account__icon__div">
-            <ShoppingCartOutlinedIcon className="account__icon" />
-          </div>
-        </Link>
-      </div>
-      <div className="navbar__account">
-        <Link to="/login">
-          <div className="account__icon__div">
-            <AccountCircleOutlinedIcon className="account__icon" />
-          </div>
-        </Link>
+      <div className="flex ml-10 gap-4">
+        <div className="navbar__search mr-10 pt-1 pb-1 pr-2 pl-2">
+          <SearchOutlinedIcon style={{ color: "#6b6b6b" }} />
+          <input
+            type="text"
+            className="search__input pt-1 pb-1"
+            placeholder="Looking for something specific?"
+          />
+        </div>
+        <div className="navbar__cart flex self-center">
+          <Link to="/cart">
+            <div className="account__icon__div">
+              <ShoppingCartOutlinedIcon className="account__icon" />
+              <p className="cart__name text-s4 font-semibold">Cart</p>
+            </div>
+          </Link>
+        </div>
+        <div className="navbar__account self-center">
+          <Link to="/">
+            <div className="account__icon__div">
+              <AccountCircleOutlinedIcon className="account__icon" />
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );

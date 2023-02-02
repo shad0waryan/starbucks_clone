@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/gift.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-function gift() {
+function Gift() {
   return (
     <div>
       <Navbar />
@@ -14,4 +14,4 @@ function gift() {
   );
 }
 
-export default gift;
+export default Gift;

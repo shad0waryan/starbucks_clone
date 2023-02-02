@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles/pay.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import barcode from "../assets/barcode.png";
-function pay() {
+function Pay() {
   return (
     <div>
       <Navbar />
@@ -47,4 +47,4 @@ function pay() {
   );
 }
 
-export default pay;
+export default Pay;

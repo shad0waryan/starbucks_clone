@@ -11,7 +11,22 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Records from "./Components/items.json";
+
 import Footer from "./Components/Footer";
+import React, { useState } from "react";
+import { Mycartcontext } from "./context";
+export const Mycart = (props) => {
+  const [cart, setCart] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
+  const [login, setLogin] = useState(false);
+  return (
+    <Mycartcontext.Provider value={{ cart, setCart, subTotal, setSubTotal, login, setLogin }}>
+      {props.children}
+    </Mycartcontext.Provider>
+  );
+};
+
 function App() {
   return (
     <div className="App">
@@ -109,12 +124,27 @@ function App() {
           className="mt-4 mb-11"
         >
           {/* <div className="cards__div flex overflow-x-scroll gap-10 p-10 overscroll-contain no-scrollbar"> */}
-          <SwiperSlide>
+          {Records.map((record) => {
+            return (
+              <SwiperSlide>
+                <Card
+                  id={record.id}
+                  photoUrl={record.photoUrl}
+                  vg={record.vg}
+                  nvg={record.nvg}
+                  name={record.name}
+                  price={record.price}
+                />
+              </SwiperSlide>
+            );
+          })}
+          {/* <SwiperSlide>
             <Card
               photoUrl={
                 "https://b.zmtcdn.com/data/pictures/chains/8/18630948/149f4d2fc28da147452d5db105d17905.png"
               }
               vg={"a"}
+              nvg={""}
               name={"Java Chip Frappuccino"}
               price={"364.50"}
             />
@@ -125,6 +155,7 @@ function App() {
                 "https://thewoodenskillet.com/wp-content/uploads/2021/07/vanilla-sweet-cream-cold-brew-1.jpg"
               }
               vg={"a"}
+              nvg={""}
               name={"Vanilla Sweet Cream Cold Brew"}
               price={"338.25"}
             />
@@ -135,6 +166,7 @@ function App() {
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAHc-rVOpr-908_Et4HyS835uWPdVwXExqZ-qzhKOTfclcqYQFZQiVC3Bh8JKfZGNyGkA&usqp=CAU"
               }
               vg={"a"}
+              nvg={""}
               name={"Signature Hot Chocolate"}
               price={"237.00"}
             />
@@ -145,6 +177,7 @@ function App() {
                 "https://media-cdn.tripadvisor.com/media/photo-s/07/83/a3/d4/latte.jpg"
               }
               vg={"a"}
+              nvg={""}
               name={"Caffe Latte"}
               price={"275.25"}
             />
@@ -155,10 +188,11 @@ function App() {
                 "https://static01.nyt.com/images/2016/02/24/dining/24FASTMUFFIN/24FASTMUFFIN-square640.jpg"
               }
               nvg={"a"}
+              vg={""}
               name={"Blueberry Muffin"}
               price={"394.40"}
             />
-          </SwiperSlide>
+          </SwiperSlide> */}
 
           {/* </div> */}
         </Swiper>

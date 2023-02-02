@@ -3,7 +3,7 @@ import "./styles/store.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-function store() {
+function Store() {
   return (
     <div>
       <Navbar />
@@ -15,4 +15,4 @@ function store() {
   );
 }
 
-export default store;
+export default Store;

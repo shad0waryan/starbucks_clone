@@ -3,7 +3,7 @@
   position: sticky;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   z-index: 999;
   background-color: white;
@@ -12,11 +12,10 @@
 .navbar__menu {
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 30px;
 }
 
 .navbar__search {
-  padding: 5px;
   display: flex;
   align-items: center;
   border-radius: 15px;
@@ -26,8 +25,7 @@
   background: none;
   outline: none;
   font-size: 12px;
-  padding: 5px;
-  padding-right: 25px;
+  /* padding-right: 25px; */
   width: 200px;
 }
 
@@ -44,10 +42,22 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 5px;
+}
+.account__icon {
+  color: #00000095;
+}
+.cart__name {
+  color: #00000095;
+}
+.navbar__cart {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   color: #6b6b6b85;
   padding: 5px;
 }
 
-.account__icon__div :hover.account__icon {
-  color: #00000095;
+.account__icon__div:hover {
+  transform: scale(1.1);
 }

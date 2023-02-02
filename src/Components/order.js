@@ -6,8 +6,9 @@ import Footer from "./Footer";
 import Card from "./Card";
 import PersonPinCircleIcon from "@mui/icons-material/PersonPinCircle";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
+import Records from "./items.json";
 
-function order() {
+function Order() {
   return (
     <div>
       <Navbar />
@@ -75,100 +76,24 @@ function order() {
         </p>
       </div>
       <div className="grid grid-cols-3 mt-12 mb-12 pl-14 pr-14 ">
-        <div className="self-center justify-self-center">
-          <Card
-            photoUrl={
-              "https://b.zmtcdn.com/data/pictures/chains/8/18630948/149f4d2fc28da147452d5db105d17905.png"
-            }
-            vg={"a"}
-            name={"Java Chip Frappuccino"}
-            price={"364.50"}
-          />
-        </div>
-        <div className="self-center justify-self-center">
-          <Card
-            photoUrl={
-              "https://thewoodenskillet.com/wp-content/uploads/2021/07/vanilla-sweet-cream-cold-brew-1.jpg"
-            }
-            vg={"a"}
-            name={"Vanilla Sweet Cream Cold Brew"}
-            price={"338.25"}
-          />
-        </div>
-        <div className="self-center justify-self-center">
-          <Card
-            photoUrl={
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAHc-rVOpr-908_Et4HyS835uWPdVwXExqZ-qzhKOTfclcqYQFZQiVC3Bh8JKfZGNyGkA&usqp=CAU"
-            }
-            vg={"a"}
-            name={"Signature Hot Chocolate"}
-            price={"237.00"}
-          />
-        </div>
-        <div className="self-center justify-self-center">
-          <Card
-            photoUrl={
-              "https://drivemehungry.com/wp-content/uploads/2022/07/new-york-cheesecake-7.jpg"
-            }
-            nvg={"a"}
-            name={"New York Cheesecake"}
-            price={"259.25"}
-          />
-        </div>
-        <div className="self-center justify-self-center">
-          <Card
-            photoUrl={
-              "https://media-cdn.tripadvisor.com/media/photo-s/07/83/a3/d4/latte.jpg"
-            }
-            vg={"a"}
-            name={"Caffe Latte"}
-            price={"275.25"}
-          />
-        </div>
-        <div className="self-center justify-self-center">
-          <Card
-            photoUrl={
-              "https://us2guntur.com/images//10071img/EggNChkCroissant_B_251020.jpg"
-            }
-            nvg={"a"}
-            name={"Egg White and Chicken In Multigrain Croiss"}
-            price={"346.50"}
-          />
-        </div>
-        <div className="self-center justify-self-center">
-          <Card
-            photoUrl={
-              "https://static01.nyt.com/images/2016/02/24/dining/24FASTMUFFIN/24FASTMUFFIN-square640.jpg"
-            }
-            nvg={"a"}
-            name={"Blueberry Muffin"}
-            price={"394.40"}
-          />
-        </div>
-        <div className="self-center justify-self-center">
-          <Card
-            photoUrl={
-              "https://healthyfitnessmeals.com/wp-content/uploads/2022/06/Chicken-Salad-Sandwich-8.jpg"
-            }
-            nvg={"a"}
-            name={"Chicken Salad Sandwich"}
-            price={"241.71"}
-          />
-        </div>
-        <div className="self-center justify-self-center">
-          <Card
-            photoUrl={
-              "https://b.zmtcdn.com/data/pictures/chains/8/18630948/149f4d2fc28da147452d5db105d17905.png"
-            }
-            vg={"a"}
-            name={"Cappuccino"}
-            price={"447.38"}
-          />
-        </div>
+        {Records.map((record) => {
+          return (
+            <div className="self-center justify-self-center">
+              <Card
+                id={record.id}
+                photoUrl={record.photoUrl}
+                vg={record.vg}
+                nvg={record.nvg}
+                name={record.name}
+                price={record.price}
+              />
+            </div>
+          );
+        })}
       </div>
       <Footer />
     </div>
   );
 }
 
-export default order;
+export default Order;
