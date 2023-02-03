@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles/gift.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 function Gift() {

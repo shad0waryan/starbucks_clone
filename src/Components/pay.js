@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./styles/pay.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";

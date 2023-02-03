@@ -1,7 +1,6 @@
 import React from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import "./styles/cart.css";
 import { Mycartcontext } from "../context";
 import { useContext } from "react";
 import veg from "../assets/veg-icon.png";
