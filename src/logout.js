@@ -1,7 +1,6 @@
 import React from "react";
 import "./login.css";
-import { Link, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Mycartcontext } from "./context";
 import { useContext } from "react";
 
