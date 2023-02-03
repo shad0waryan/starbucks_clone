@@ -61,7 +61,7 @@ function Cart() {
                       onClick={() => {
                         removeFromCart(id, price);
                       }}
-                      className="ml-12 hover:scale-105 hover:duration-150 bg-red pl-3 pr-3 pt-2 pb-2 rounded-3xl text-white hover:bg-darkred"
+                      className="ml-12 hover:scale-105 bg-red pl-3 pr-3 pt-2 pb-2 rounded-3xl text-white hover:bg-darkred"
                     >
                       Remove
                     </button>

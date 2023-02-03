@@ -18,7 +18,6 @@ import Pay from "./Components/pay";
 import Order from "./Components/order";
 import Cart from "./Components/Cart";
 import Signup from "./signup";
-import Logout from "./logout";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -33,7 +32,6 @@ root.render(
           <Route path="/pay" element={<Pay />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/order" element={<Order />} />
-          <Route path="/logout" element={<Logout />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </Router>

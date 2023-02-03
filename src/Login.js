@@ -1,31 +1,17 @@
 import React from "react";
 import "./login.css";
 import { Link, Navigate } from "react-router-dom";
-import { useState } from "react";
 import { Mycartcontext } from "./context";
 import { useContext } from "react";
 function Login() {
-  const validUser = "admin";
-  const validPass = "123";
   const a = useContext(Mycartcontext);
-  const { logged, setLogged } = a;
-  const [user, setUser] = useState("");
-  const [pass, setPass] = useState("");
-  const handleSubmit = (submit) => {
-    submit.preventDefault();
-    if (user === validUser && pass === validPass) {
-      setLogged(true);
-    } else if (user === "" || pass === "") {
-      alert("Please enter both username and password!");
-    } else {
-      alert("Wrong Credentials!");
-    }
-  };
+  const { logEmail, setLogEmail, logPassword, setLogPassword, login, logged } =
+    a;
   return (
     <div className="bg-newblack">
       <div className="login__page flex flex-col items-center">
         <div className="login mt-[15vh]">
-          <form className="login__form mt-6 font-thin" onSubmit={handleSubmit}>
+          <div className="login__form mt-6 font-thin">
             <Link to="/Home" className="self-end">
               <p className="text-lightgreen font-bold text-s2 p-2 hover:scale-125">
                 SKIP
@@ -34,27 +20,25 @@ function Login() {
             <h1 className="login__heading text-s6 font-bold self-start mb-4">
               Login
             </h1>
-            <label htmlFor="username">
-              Username (Please enter "admin" or click on skip)
-            </label>
+            <label htmlFor="username">Username (Or click on skip)</label>
             <input
               id="username"
               type="text"
               onChange={(event) => {
-                setUser(event.target.value);
+                setLogEmail(event.target.value);
               }}
-              value={user}
+              value={logEmail}
               className="input__field mb-2"
               placeholder="Enter Email ID or Mobile Number"
             />
-            <label htmlFor="password">Password (Please enter "123")</label>
+            <label htmlFor="password">Password </label>
             <input
               id="password"
               type="password"
               onChange={(event) => {
-                setPass(event.target.value);
+                setLogPassword(event.target.value);
               }}
-              value={pass}
+              value={logPassword}
               className="input__field mb-2"
               placeholder="Enter Password"
             />
@@ -68,8 +52,9 @@ function Login() {
             </span>
             <div className="login__button__div ">
               <button
-                disabled={user === "" && pass === ""}
-                className="login__button  bg-lightgreen hover:bg-darkgreen  disabled:opacity-60 disabled: scale-100"
+                disabled={logEmail === "" || logPassword.length < 8}
+                className="login__button mt-4 bg-lightgreen hover:bg-darkgreen  disabled:opacity-60 disabled: scale-100"
+                onClick={login}
               >
                 Login
               </button>
@@ -81,7 +66,7 @@ function Login() {
                 Get help
               </p>
             </span>
-          </form>
+          </div>
         </div>
       </div>
     </div>

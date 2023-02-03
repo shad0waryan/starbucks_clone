@@ -1,5 +1,11 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
+import {
+  createUserWithEmailAndPassword,
+  signOut,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "./firebase-config";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -17,10 +23,62 @@ import { useContext } from "react";
 import Footer from "./Components/Footer";
 import React, { useState } from "react";
 import { Mycartcontext } from "./context";
+import swal from "sweetalert";
 export const Mycart = (props) => {
+  const [regEmail, setRegEmail] = useState("");
+
+  const [regPassword, setRegPassword] = useState("");
+
+  const [logEmail, setLogEmail] = useState("");
+
+  const [logPassword, setLogPassword] = useState("");
+
+  const [curUser, setCurUser] = useState({});
+
   const [cart, setCart] = useState([]);
+
   const [subTotal, setSubTotal] = useState(0);
+
   const [logged, setLogged] = useState(false);
+
+  const register = async () => {
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        regEmail,
+        regPassword
+      );
+      swal({
+        title: "Registered",
+        text: "You can now Login",
+        icon: "success",
+        button: "OK",
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const login = async () => {
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const user = await signInWithEmailAndPassword(
+        auth,
+        logEmail,
+        logPassword
+      );
+      setLogged(true);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const logout = async () => {
+    await signOut(auth);
+    setLogged(false);
+  };
+
   return (
     <Mycartcontext.Provider
       value={{
@@ -30,6 +88,19 @@ export const Mycart = (props) => {
         setSubTotal,
         logged,
         setLogged,
+        regEmail,
+        setRegEmail,
+        regPassword,
+        setRegPassword,
+        logEmail,
+        setLogEmail,
+        logPassword,
+        setLogPassword,
+        register,
+        login,
+        logout,
+        curUser,
+        setCurUser,
       }}
     >
       {props.children}

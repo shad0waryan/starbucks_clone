@@ -6,10 +6,10 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Mycartcontext } from "../context";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 function Navbar() {
   const a = useContext(Mycartcontext);
-  const { logged } = a;
+  const { logged, logout } = a;
 
   return (
     <div className="navbar pl-24 pr-24">
@@ -78,29 +78,21 @@ function Navbar() {
         )}
         {logged && (
           <div className="navbar__account self-center flex items-center">
-            <Link to="/logout">
-              <div className="account__icon__div">
-                <AccountCircleOutlinedIcon className="account__icon" />
-                <p className="cart__name text-s4 font-semibold">Logout</p>
-              </div>
-            </Link>
+            <p className="cart__name text-s4 font-semibold mr-4">
+              Welcome User
+            </p>
+            <button className="account__icon__div">
+              <AccountCircleOutlinedIcon className="account__icon" />
+              <button
+                onClick={logout}
+                className="cart__name text-s4 font-semibold"
+              >
+                Logout
+              </button>
+              {!logged && <Navigate to="/" />}
+            </button>
           </div>
         )}
-        {/* {logged && (
-          <div className="navbar__account self-center flex items-center">
-            <Link to="/">
-              <div className="account__icon__div">
-                <AccountCircleOutlinedIcon className="account__icon" />
-                <button
-                  onclick={setLogged(false)}
-                  className="cart__name text-s4 font-semibold"
-                >
-                  Lsadnbia
-                </button>
-              </div>
-            </Link>
-          </div>
-        )} */}
       </div>
     </div>
   );
