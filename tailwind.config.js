@@ -18,6 +18,9 @@ module.exports = {
       darkred: "#c21807",
       lightgrey: "#a0a0a0",
       darkishgreen: "#006241",
+      newpink: "#d22e58",
+      whitegreen: "#d4e9e2",
+      neworange: "#ec9718",
     },
     fontSize: {
       s1: "10px",

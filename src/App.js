@@ -221,7 +221,7 @@ function App() {
       <Footer />
       {cart.length > 0 && (
         <div className=" bg-transparent sticky bottom-0 z-50">
-          <div className="bg-lightgreen rounded-t-3xl pt-6 pl-24 pr-24 pb-6 flex justify-between">
+          <div className="bg-lightgreen rounded-t-2xl pt-6 pl-24 pr-24 pb-6 flex justify-between">
             {cart.length === 1 && (
               <p className="text-white font-semibold text-s5">
                 {cart.length} item in cart

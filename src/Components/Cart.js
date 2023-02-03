@@ -113,7 +113,7 @@ function Cart() {
         </span>
       </div>
       <div className=" bg-transparent sticky bottom-0 ">
-        <div className="bg-lightgreen rounded-t-3xl pt-6"></div>
+        <div className="bg-lightgreen rounded-t-2xl pt-6"></div>
         <div className="bg-lightgreen text-white  flex items-center justify-between pl-24 pr-24">
           {cart.length === 1 && (
             <p className="text-white font-semibold text-s5">
