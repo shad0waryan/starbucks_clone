@@ -4,18 +4,27 @@ import logo from "../assets/starbucks.png";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { Mycartcontext } from "../context";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 function Navbar() {
+  const a = useContext(Mycartcontext);
+  const { logged } = a;
+
   return (
     <div className="navbar pl-24 pr-24">
       <div className="navbar__menu text-s4">
         <Link to="/Home" className="p-5">
           <div className="navbar__logo  ">
-            <img src={logo} alt="" className="logo w-[40px] h-[40px] hover:scale-105" />
+            <img
+              src={logo}
+              alt=""
+              className="logo w-[40px] h-[40px] hover:scale-105"
+            />
           </div>
         </Link>
         <Link to="/Home">
-          <div className="home pl-2 pr-2 hover:cursor-pointer pt-2 pb-2 hover:scale-110" >
+          <div className="home pl-2 pr-2 hover:cursor-pointer pt-2 pb-2 hover:scale-110">
             Home
           </div>
         </Link>
@@ -57,13 +66,41 @@ function Navbar() {
             </div>
           </Link>
         </div>
-        <div className="navbar__account self-center">
-          <Link to="/">
-            <div className="account__icon__div">
-              <AccountCircleOutlinedIcon className="account__icon" />
-            </div>
-          </Link>
-        </div>
+        {!logged && (
+          <div className="navbar__account self-center flex items-center">
+            <Link to="/">
+              <div className="account__icon__div">
+                <AccountCircleOutlinedIcon className="account__icon" />
+                <p className="cart__name text-s4 font-semibold">Login</p>
+              </div>
+            </Link>
+          </div>
+        )}
+        {logged && (
+          <div className="navbar__account self-center flex items-center">
+            <Link to="/logout">
+              <div className="account__icon__div">
+                <AccountCircleOutlinedIcon className="account__icon" />
+                <p className="cart__name text-s4 font-semibold">Logout</p>
+              </div>
+            </Link>
+          </div>
+        )}
+        {/* {logged && (
+          <div className="navbar__account self-center flex items-center">
+            <Link to="/">
+              <div className="account__icon__div">
+                <AccountCircleOutlinedIcon className="account__icon" />
+                <button
+                  onclick={setLogged(false)}
+                  className="cart__name text-s4 font-semibold"
+                >
+                  Lsadnbia
+                </button>
+              </div>
+            </Link>
+          </div>
+        )} */}
       </div>
     </div>
   );

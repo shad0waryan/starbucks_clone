@@ -7,27 +7,40 @@ import star1 from "./assets/star.png";
 import star2 from "./assets/star (1).png";
 import Category from "./Components/category";
 import Card from "./Components/Card";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Records from "./Components/items.json";
-
+import { useContext } from "react";
 import Footer from "./Components/Footer";
 import React, { useState } from "react";
 import { Mycartcontext } from "./context";
 export const Mycart = (props) => {
   const [cart, setCart] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
-  const [login, setLogin] = useState(false);
+  const [logged, setLogged] = useState(false);
   return (
-    <Mycartcontext.Provider value={{ cart, setCart, subTotal, setSubTotal, login, setLogin }}>
+    <Mycartcontext.Provider
+      value={{
+        cart,
+        setCart,
+        subTotal,
+        setSubTotal,
+        logged,
+        setLogged,
+      }}
+    >
       {props.children}
     </Mycartcontext.Provider>
   );
 };
 
 function App() {
+  const a = useContext(Mycartcontext);
+  const { cart } = a;
+
   return (
     <div className="App">
       <Navbar />
@@ -116,13 +129,7 @@ function App() {
           Scroll
           <ArrowForwardIcon />
         </p>
-        <Swiper
-          spaceBetween={40}
-          slidesPerView={3}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-          className="mt-4 mb-11"
-        >
+        <Swiper spaceBetween={40} slidesPerView={3} className="mt-4 mb-11 z-0">
           {/* <div className="cards__div flex overflow-x-scroll gap-10 p-10 overscroll-contain no-scrollbar"> */}
           {Records.map((record) => {
             return (
@@ -138,66 +145,32 @@ function App() {
               </SwiperSlide>
             );
           })}
-          {/* <SwiperSlide>
-            <Card
-              photoUrl={
-                "https://b.zmtcdn.com/data/pictures/chains/8/18630948/149f4d2fc28da147452d5db105d17905.png"
-              }
-              vg={"a"}
-              nvg={""}
-              name={"Java Chip Frappuccino"}
-              price={"364.50"}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card
-              photoUrl={
-                "https://thewoodenskillet.com/wp-content/uploads/2021/07/vanilla-sweet-cream-cold-brew-1.jpg"
-              }
-              vg={"a"}
-              nvg={""}
-              name={"Vanilla Sweet Cream Cold Brew"}
-              price={"338.25"}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card
-              photoUrl={
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAHc-rVOpr-908_Et4HyS835uWPdVwXExqZ-qzhKOTfclcqYQFZQiVC3Bh8JKfZGNyGkA&usqp=CAU"
-              }
-              vg={"a"}
-              nvg={""}
-              name={"Signature Hot Chocolate"}
-              price={"237.00"}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card
-              photoUrl={
-                "https://media-cdn.tripadvisor.com/media/photo-s/07/83/a3/d4/latte.jpg"
-              }
-              vg={"a"}
-              nvg={""}
-              name={"Caffe Latte"}
-              price={"275.25"}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card
-              photoUrl={
-                "https://static01.nyt.com/images/2016/02/24/dining/24FASTMUFFIN/24FASTMUFFIN-square640.jpg"
-              }
-              nvg={"a"}
-              vg={""}
-              name={"Blueberry Muffin"}
-              price={"394.40"}
-            />
-          </SwiperSlide> */}
-
-          {/* </div> */}
         </Swiper>
       </div>
       <Footer />
+      {cart.length > 0 && (
+        <div className=" bg-transparent sticky bottom-0 z-50">
+          <div className="bg-lightgreen rounded-t-3xl pt-6 pl-24 pr-24 pb-6 flex justify-between">
+            {cart.length === 1 && (
+              <p className="text-white font-semibold text-s5">
+                {cart.length} item in cart
+              </p>
+            )}
+            {cart.length > 1 && (
+              <p className="text-white font-semibold text-s5">
+                {cart.length} items in cart
+              </p>
+            )}
+            <div className="bg-lightgren ">
+              <Link to="/cart">
+                <button className="bg-white opacity-100 font-semibold pl-4 pr-4 pt-2 pb-2 rounded-3xl ">
+                  Go To Cart
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

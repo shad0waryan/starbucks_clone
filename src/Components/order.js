@@ -7,8 +7,13 @@ import Card from "./Card";
 import PersonPinCircleIcon from "@mui/icons-material/PersonPinCircle";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 import Records from "./items.json";
-
+import { Mycartcontext } from "../context";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 function Order() {
+  const a = useContext(Mycartcontext);
+  const { cart } = a;
+
   return (
     <div>
       <Navbar />
@@ -92,6 +97,29 @@ function Order() {
         })}
       </div>
       <Footer />
+      {cart.length > 0 && (
+        <div className=" bg-transparent sticky bottom-0">
+          <div className="bg-lightgreen rounded-t-3xl pt-6 pl-24 pr-24 pb-6 flex justify-between">
+            {cart.length === 1 && (
+              <p className="text-white font-semibold text-s5">
+                {cart.length} item in cart
+              </p>
+            )}
+            {cart.length > 1 && (
+              <p className="text-white font-semibold text-s5">
+                {cart.length} items in cart
+              </p>
+            )}
+            <div className="bg-lightgren ">
+              <Link to="/cart">
+                <button className="bg-white opacity-100 font-semibold pl-4 pr-4 pt-2 pb-2 rounded-3xl ">
+                  Go To Cart
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

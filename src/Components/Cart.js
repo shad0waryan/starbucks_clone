@@ -112,11 +112,21 @@ function Cart() {
           </p>
         </span>
       </div>
-      <div className=" bg-transparent sticky bottom-0">
+      <div className=" bg-transparent sticky bottom-0 ">
         <div className="bg-lightgreen rounded-t-3xl pt-6"></div>
         <div className="bg-lightgreen text-white  flex items-center justify-between pl-24 pr-24">
-          <p className="text-s5">{cart.length} items in cart</p>
-          <p>₹ {parseFloat(subTotal + taxes).toFixed(2)}</p>
+          {cart.length === 1 && (
+            <p className="text-white font-semibold text-s5">
+              {cart.length} item in cart
+            </p>
+          )}
+          {cart.length > 1 && (
+            <p className="text-white font-semibold text-s5">
+              {cart.length} items in cart
+            </p>
+          )}
+          {subTotal > 0 && <p>₹ {parseFloat(subTotal + taxes).toFixed(2)}</p>}
+          {subTotal <= 0 && <p className="pb-2"> Please add items in cart</p>}
         </div>
         <div className="bg-darkishgreen pb-10 pl-24 pr-24 pt-4  flex justify-end">
           <Link to="/pay">

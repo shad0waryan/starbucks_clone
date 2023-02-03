@@ -4,7 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { Mycartcontext } from "./context";
 import { useContext } from "react";
-function Login() {
+function Signup() {
   const validUser = "admin";
   const validPass = "123";
   const a = useContext(Mycartcontext);
@@ -32,11 +32,9 @@ function Login() {
               </p>
             </Link>
             <h1 className="login__heading text-s6 font-bold self-start mb-4">
-              Login
+              Register user
             </h1>
-            <label htmlFor="username">
-              Username (Please enter "admin" or click on skip)
-            </label>
+            <label htmlFor="username">Create Username</label>
             <input
               id="username"
               type="text"
@@ -47,7 +45,7 @@ function Login() {
               className="input__field mb-2"
               placeholder="Enter Email ID or Mobile Number"
             />
-            <label htmlFor="password">Password (Please enter "123")</label>
+            <label htmlFor="password">Create a new Password </label>
             <input
               id="password"
               type="password"
@@ -59,28 +57,22 @@ function Login() {
               placeholder="Enter Password"
             />
             <span className="flex items-center mt-2">
-              <p className="text-s2 font-normal">Don't Have an account?</p>
-              <Link to="/signup">
+              <p className="text-s2 font-normal">Already have an account?</p>
+              <Link to="/">
                 <p className="text-s2 text-lightgreen font-medium pl-1 underline hover:cursor-pointer">
-                  Sign Up
+                  Log In
                 </p>
               </Link>
             </span>
             <div className="login__button__div ">
               <button
-                disabled={user === "" && pass === ""}
+                disabled={user === "" || pass === ""}
                 className="login__button  bg-lightgreen hover:bg-darkgreen  disabled:opacity-60 disabled: scale-100"
               >
-                Login
+                Register
               </button>
               {logged && <Navigate to="/Home" />}
             </div>
-            <span className="flex items-center mt-2 self-center ">
-              <p className="text-s2 font-normal">Facing trouble logging in?</p>
-              <p className="text-s2 text-lightgreen font-medium pl-1 underline hover:cursor-pointer">
-                Get help
-              </p>
-            </span>
           </form>
         </div>
       </div>
@@ -88,4 +80,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;

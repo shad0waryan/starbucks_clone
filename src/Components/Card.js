@@ -15,6 +15,7 @@ function Card({ id, photoUrl, name, vg, nvg, price }) {
     setCart([...cart, newCart]);
     setSubTotal(subTotal + price);
   };
+
   return (
     <div className="item__card  bg-[white] rounded-lg p-[20px] mb-2">
       <div className="item__info flex gap-4 ">
